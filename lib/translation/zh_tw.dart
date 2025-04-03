@@ -76,6 +76,7 @@ class ZhTw {
         'amoledTheme': 'AMOLED 主題',
         'appearance': '外觀',
         'functions': '功能',
+        'defaultScreen': '預設畫面',
         'data': '資料',
         'language': '語言',
         'active': '進行中',

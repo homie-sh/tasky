@@ -27,38 +27,43 @@ const SettingsSchema = CollectionSchema(
       name: r'calendarFormat',
       type: IsarType.string,
     ),
-    r'firstDay': PropertySchema(
+    r'defaultScreen': PropertySchema(
       id: 2,
+      name: r'defaultScreen',
+      type: IsarType.string,
+    ),
+    r'firstDay': PropertySchema(
+      id: 3,
       name: r'firstDay',
       type: IsarType.string,
     ),
     r'isImage': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'isImage',
       type: IsarType.bool,
     ),
     r'language': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'language',
       type: IsarType.string,
     ),
     r'materialColor': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'materialColor',
       type: IsarType.bool,
     ),
     r'onboard': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'onboard',
       type: IsarType.bool,
     ),
     r'theme': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'theme',
       type: IsarType.string,
     ),
     r'timeformat': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'timeformat',
       type: IsarType.string,
     )
@@ -84,6 +89,7 @@ int _settingsEstimateSize(
 ) {
   var bytesCount = offsets.last;
   bytesCount += 3 + object.calendarFormat.length * 3;
+  bytesCount += 3 + object.defaultScreen.length * 3;
   bytesCount += 3 + object.firstDay.length * 3;
   {
     final value = object.language;
@@ -109,13 +115,14 @@ void _settingsSerialize(
 ) {
   writer.writeBool(offsets[0], object.amoledTheme);
   writer.writeString(offsets[1], object.calendarFormat);
-  writer.writeString(offsets[2], object.firstDay);
-  writer.writeBool(offsets[3], object.isImage);
-  writer.writeString(offsets[4], object.language);
-  writer.writeBool(offsets[5], object.materialColor);
-  writer.writeBool(offsets[6], object.onboard);
-  writer.writeString(offsets[7], object.theme);
-  writer.writeString(offsets[8], object.timeformat);
+  writer.writeString(offsets[2], object.defaultScreen);
+  writer.writeString(offsets[3], object.firstDay);
+  writer.writeBool(offsets[4], object.isImage);
+  writer.writeString(offsets[5], object.language);
+  writer.writeBool(offsets[6], object.materialColor);
+  writer.writeBool(offsets[7], object.onboard);
+  writer.writeString(offsets[8], object.theme);
+  writer.writeString(offsets[9], object.timeformat);
 }
 
 Settings _settingsDeserialize(
@@ -127,14 +134,15 @@ Settings _settingsDeserialize(
   final object = Settings();
   object.amoledTheme = reader.readBool(offsets[0]);
   object.calendarFormat = reader.readString(offsets[1]);
-  object.firstDay = reader.readString(offsets[2]);
+  object.defaultScreen = reader.readString(offsets[2]);
+  object.firstDay = reader.readString(offsets[3]);
   object.id = id;
-  object.isImage = reader.readBoolOrNull(offsets[3]);
-  object.language = reader.readStringOrNull(offsets[4]);
-  object.materialColor = reader.readBool(offsets[5]);
-  object.onboard = reader.readBool(offsets[6]);
-  object.theme = reader.readStringOrNull(offsets[7]);
-  object.timeformat = reader.readString(offsets[8]);
+  object.isImage = reader.readBoolOrNull(offsets[4]);
+  object.language = reader.readStringOrNull(offsets[5]);
+  object.materialColor = reader.readBool(offsets[6]);
+  object.onboard = reader.readBool(offsets[7]);
+  object.theme = reader.readStringOrNull(offsets[8]);
+  object.timeformat = reader.readString(offsets[9]);
   return object;
 }
 
@@ -152,16 +160,18 @@ P _settingsDeserializeProp<P>(
     case 2:
       return (reader.readString(offset)) as P;
     case 3:
-      return (reader.readBoolOrNull(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 4:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readBoolOrNull(offset)) as P;
     case 5:
-      return (reader.readBool(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 6:
       return (reader.readBool(offset)) as P;
     case 7:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 8:
+      return (reader.readStringOrNull(offset)) as P;
+    case 9:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -397,6 +407,140 @@ extension SettingsQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'calendarFormat',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition> defaultScreenEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'defaultScreen',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition>
+      defaultScreenGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'defaultScreen',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition> defaultScreenLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'defaultScreen',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition> defaultScreenBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'defaultScreen',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition>
+      defaultScreenStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'defaultScreen',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition> defaultScreenEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'defaultScreen',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition> defaultScreenContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'defaultScreen',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition> defaultScreenMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'defaultScreen',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition>
+      defaultScreenIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'defaultScreen',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterFilterCondition>
+      defaultScreenIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'defaultScreen',
         value: '',
       ));
     });
@@ -1085,6 +1229,18 @@ extension SettingsQuerySortBy on QueryBuilder<Settings, Settings, QSortBy> {
     });
   }
 
+  QueryBuilder<Settings, Settings, QAfterSortBy> sortByDefaultScreen() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'defaultScreen', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterSortBy> sortByDefaultScreenDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'defaultScreen', Sort.desc);
+    });
+  }
+
   QueryBuilder<Settings, Settings, QAfterSortBy> sortByFirstDay() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'firstDay', Sort.asc);
@@ -1193,6 +1349,18 @@ extension SettingsQuerySortThenBy
   QueryBuilder<Settings, Settings, QAfterSortBy> thenByCalendarFormatDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'calendarFormat', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterSortBy> thenByDefaultScreen() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'defaultScreen', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Settings, Settings, QAfterSortBy> thenByDefaultScreenDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'defaultScreen', Sort.desc);
     });
   }
 
@@ -1309,6 +1477,14 @@ extension SettingsQueryWhereDistinct
     });
   }
 
+  QueryBuilder<Settings, Settings, QDistinct> distinctByDefaultScreen(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'defaultScreen',
+          caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<Settings, Settings, QDistinct> distinctByFirstDay(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1373,6 +1549,12 @@ extension SettingsQueryProperty
   QueryBuilder<Settings, String, QQueryOperations> calendarFormatProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'calendarFormat');
+    });
+  }
+
+  QueryBuilder<Settings, String, QQueryOperations> defaultScreenProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'defaultScreen');
     });
   }
 

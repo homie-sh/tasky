@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:isar/isar.dart';
 
 part 'db.g.dart';
@@ -15,6 +16,7 @@ class Settings {
   String? language;
   String firstDay = 'monday';
   String calendarFormat = 'week';
+  String defaultScreen = 'categories';
 }
 
 @collection

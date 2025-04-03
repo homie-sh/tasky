@@ -81,6 +81,7 @@ class PlPl {
     'amoledTheme': 'Motyw AMOLED',
     'appearance': 'Wygląd',
     'functions': 'Funkcje',
+    'defaultScreen': 'Ekran domyślny',
     'data': 'Data',
     'language': 'Język',
     'active': 'Aktywne',

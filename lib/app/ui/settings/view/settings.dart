@@ -24,6 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
   final todoController = Get.put(TodoController());
   final isarController = Get.put(IsarController());
   final themeController = Get.put(ThemeController());
+
   String? appVersion;
 
   Future<void> infoVersion() async {
@@ -37,6 +38,12 @@ class _SettingsPageState extends State<SettingsPage> {
     settings.language = '$locale';
     isar.writeTxnSync(() => isar.settings.putSync(settings));
     Get.updateLocale(locale);
+    Get.back();
+  }
+
+  void updateDefaultScreen(String defaultScreen) {
+    settings.defaultScreen = defaultScreen;
+    isar.writeTxnSync(() => isar.settings.putSync(settings));
     Get.back();
   }
 
@@ -396,6 +403,74 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             SettingCard(
               icon: const Icon(IconsaxPlusLinear.language_square),
+              text: 'defaultScreen'.tr,
+              info: true,
+              infoSettings: true,
+              textInfo: settings.defaultScreen.isNotEmpty ? settings.defaultScreen.tr : allScreens[0].tr,
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).padding.bottom,
+                      ),
+                      child: StatefulBuilder(
+                        builder: (BuildContext context, setState) {
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 15,
+                                ),
+                                child: Text(
+                                  'defaultScreen'.tr,
+                                  style: context.textTheme.titleLarge?.copyWith(
+                                    fontSize: 20,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: const BouncingScrollPhysics(),
+                                itemCount: allScreens.length,
+                                itemBuilder: (context, index) {
+                                  return Card(
+                                    elevation: 4,
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 15,
+                                      vertical: 5,
+                                    ),
+                                    child: ListTile(
+                                      title: Text(
+                                        allScreens[index].tr,
+                                        style: context.textTheme.labelLarge,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      onTap: () {
+                                        this.setState(() {
+                                          updateDefaultScreen(allScreens[index]);
+                                        });
+                                      },
+                                    ),
+                                  );
+                                },
+                              ),
+                              const Gap(10),
+                            ],
+                          );
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+            SettingCard(
+              icon: const Icon(IconsaxPlusLinear.language_square),
               text: 'language'.tr,
               info: true,
               infoSettings: true,
@@ -446,15 +521,17 @@ class _SettingsPageState extends State<SettingsPage> {
                                         style: context.textTheme.labelLarge,
                                         textAlign: TextAlign.center,
                                       ),
-                                      onTap: () {
+                                      onTap: () async {
                                         MyApp.updateAppState(
                                           context,
                                           newLocale:
                                               appLanguages[index]['locale'],
                                         );
+
                                         updateLanguage(
                                           appLanguages[index]['locale'],
                                         );
+                                        this.setState(() {});
                                       },
                                     ),
                                   );

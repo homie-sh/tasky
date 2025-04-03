@@ -80,6 +80,7 @@ class EnUs {
         'amoledTheme': 'AMOLED-theme',
         'appearance': 'Appearance',
         'functions': 'Functions',
+        'defaultScreen': 'Default Screen',
         'data': 'Data',
         'language': 'Language',
         'active': 'Active',

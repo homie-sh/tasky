@@ -86,6 +86,7 @@ class EsEs {
         'amoledTheme': 'AMOLED-tema',
         'appearance': 'Apariencia',
         'functions': 'Funciones',
+        'defaultScreen': 'Pantalla predeterminada',
         'data': 'Datos',
         'language': 'Idioma',
         'active': 'Activo',

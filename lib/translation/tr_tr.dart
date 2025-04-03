@@ -82,6 +82,7 @@ class TrTr {
         'amoledTheme': 'AMOLED-tema',
         'appearance': 'Görünüm',
         'functions': 'Fonksiyonlar',
+        'defaultScreen': 'Varsayılan ekran',
         'data': 'Veri',
         'language': 'Dil',
         'active': 'Aktif',

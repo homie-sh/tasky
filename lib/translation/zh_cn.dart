@@ -76,6 +76,7 @@ class ZhCN {
         'amoledTheme': 'AMOLED 主题',
         'appearance': '外观',
         'functions': '功能',
+        'defaultScreen': '默认屏幕',
         'data': '数据',
         'language': '语言',
         'active': '活跃的',

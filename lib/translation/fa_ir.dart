@@ -83,6 +83,7 @@ class FaIr {
         'amoledTheme': 'تم AMOLED',
         'appearance': 'ظاهر',
         'functions': 'توابع',
+        'defaultScreen': 'صفحه پیش‌فرض',
         'data': 'داده‌ها',
         'language': 'زبان',
         'active': 'فعال',

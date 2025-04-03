@@ -81,6 +81,7 @@ class DeDe {
         'amoledTheme': 'AMOLED-theme',
         'appearance': 'Aussehen',
         'functions': 'Funktionen',
+        'defaultScreen': 'Standardbildschirm',
         'data': 'Daten',
         'language': 'Sprache',
         'active': 'Aktiv',
