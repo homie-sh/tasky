@@ -402,7 +402,7 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             SettingCard(
-              icon: const Icon(IconsaxPlusLinear.language_square),
+              icon: const Icon(IconsaxPlusLinear.mobile),
               text: 'defaultScreen'.tr,
               info: true,
               infoSettings: true,
@@ -521,7 +521,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                         style: context.textTheme.labelLarge,
                                         textAlign: TextAlign.center,
                                       ),
-                                      onTap: () async {
+                                      onTap: () {
                                         MyApp.updateAppState(
                                           context,
                                           newLocale:
