@@ -76,6 +76,7 @@ class PtPt {
         'amoledTheme': 'AMOLED-tema',
         'appearance': 'Aparência',
         'functions': 'Características',
+        'defaultScreen': 'Tela padrão',
         'data': 'Dados',
         'language': 'Idioma',
         'active': 'Ativo',

@@ -51,6 +51,8 @@ final List appLanguages = [
   {'name': 'Português', 'locale': const Locale('pt', 'PT')},
 ];
 
+List<String> allScreens = [];
+
 void main() async {
   final String timeZoneName;
   WidgetsFlutterBinding.ensureInitialized();

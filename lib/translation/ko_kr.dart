@@ -76,6 +76,7 @@ class KoKr {
         'amoledTheme': 'AMOLED 테마',
         'appearance': '디자인',
         'functions': '기능',
+        'defaultScreen': '기본 화면',
         'data': '데이터',
         'language': '언어',
         'active': '수행 중',

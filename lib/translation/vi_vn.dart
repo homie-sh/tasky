@@ -80,6 +80,7 @@ class ViVn {
         'amoledTheme': 'Chủ đề AMOLED',
         'appearance': 'Hiển thị',
         'functions': 'Chức năng',
+        'defaultScreen': 'Màn hình mặc định',
         'data': 'Dữ liệu',
         'language': 'Ngôn ngữ',
         'active': 'Hoạt động',

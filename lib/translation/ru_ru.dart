@@ -79,6 +79,7 @@ class RuRu {
         'amoledTheme': 'AMOLED-тема',
         'appearance': 'Внешний вид',
         'functions': 'Функции',
+        'defaultScreen': 'Экран по умолчанию',
         'data': 'Данные',
         'language': 'Язык',
         'active': 'Активные',

@@ -85,6 +85,7 @@ class FrFr {
         'amoledTheme': 'AMOLED-thème',
         'appearance': 'Apparence',
         'functions': 'Fonctions',
+        'defaultScreen': 'Écran par défaut',
         'data': 'Données',
         'language': 'Langue',
         'active': 'Active',

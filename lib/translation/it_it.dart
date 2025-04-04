@@ -81,6 +81,7 @@ class ItIt {
         'amoledTheme': 'Tema AMOLED',
         'appearance': 'Aspetto',
         'functions': 'Funzioni',
+        'defaultScreen': 'Schermo predefinito',
         'data': 'Dati',
         'language': 'Lingua',
         'active': 'Attivo',

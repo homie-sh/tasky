@@ -8,6 +8,7 @@ import 'package:zest/app/ui/todos/view/calendar_todos.dart';
 import 'package:zest/app/ui/todos/view/all_todos.dart';
 import 'package:zest/app/ui/todos/widgets/todos_action.dart';
 import 'package:zest/theme/theme_controller.dart';
+import 'package:zest/main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,8 +41,21 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  List<String> getScreens() {
+    return ['categories', 'allTodos', 'calendar'];
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    allScreens = getScreens();
+    tabIndex = allScreens.indexOf(allScreens.firstWhere((element) => (element == settings.defaultScreen), orElse: () => allScreens[0]));
+  }
+
   @override
   Widget build(BuildContext context) {
+    allScreens = getScreens();
     return Scaffold(
       body: IndexedStack(index: tabIndex, children: pages),
       bottomNavigationBar: GestureDetector(
@@ -53,17 +67,17 @@ class _HomePageState extends State<HomePage> {
             NavigationDestination(
               icon: const Icon(IconsaxPlusLinear.folder_2),
               selectedIcon: const Icon(IconsaxPlusBold.folder_2),
-              label: 'categories'.tr,
+              label: allScreens[0].tr,
             ),
             NavigationDestination(
               icon: const Icon(IconsaxPlusLinear.task_square),
               selectedIcon: const Icon(IconsaxPlusBold.task_square),
-              label: 'allTodos'.tr,
+              label: allScreens[1].tr,
             ),
             NavigationDestination(
               icon: const Icon(IconsaxPlusLinear.calendar),
               selectedIcon: const Icon(IconsaxPlusBold.calendar),
-              label: 'calendar'.tr,
+              label: allScreens[2].tr,
             ),
             NavigationDestination(
               icon: const Icon(IconsaxPlusLinear.category),

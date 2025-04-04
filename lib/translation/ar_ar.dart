@@ -79,6 +79,7 @@ class ArAr {
         'amoledTheme': 'سِمة سوداء (AMOLED)',
         'appearance': 'المضهر',
         'functions': 'الدوال',
+        'defaultScreen': 'الشاشة الافتراضية',
         'data': 'بينات',
         'language': 'اللغة',
         'active': 'الشغالة',
