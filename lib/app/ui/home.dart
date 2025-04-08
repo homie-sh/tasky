@@ -45,12 +45,16 @@ class _HomePageState extends State<HomePage> {
     return ['categories', 'allTodos', 'calendar'];
   }
 
-
   @override
   void initState() {
     super.initState();
     allScreens = getScreens();
-    tabIndex = allScreens.indexOf(allScreens.firstWhere((element) => (element == settings.defaultScreen), orElse: () => allScreens[0]));
+    tabIndex = allScreens.indexOf(
+      allScreens.firstWhere(
+        (element) => (element == settings.defaultScreen),
+        orElse: () => allScreens[0],
+      ),
+    );
   }
 
   @override

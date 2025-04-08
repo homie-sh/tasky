@@ -1,15 +1,15 @@
 <div align='center'>
-<img src='/assets/icons/icon.png' width='150'/>
-<h2>📝 Zest</h2>
+    <img src='/readme/icon.png' width='150'/>
+    <h2>📝 Zest</h2>
 </div>
 
 <p align='center'>
- <p align='center'>
-    <a href='https://github.com/darkmoonight/Zest/stargazers'><img alt='Stars' src='https://img.shields.io/github/stars/darkmoonight/Zest?color=ABACD3'/></a>
-    <a href='https://github.com/darkmoonight/Zest/forks'><img alt='Forks' src='https://img.shields.io/github/forks/darkmoonight/Zest?color=ABACD3'/></a>
-    <a href='https://github.com/darkmoonight/Zest/releases'><img alt='GitHub release' src='https://img.shields.io/github/v/release/darkmoonight/Zest?color=ABACD3'/></a>
-    <a href='https://github.com/darkmoonight/Zest/blob/main/LICENSE'><img alt='License' src='https://img.shields.io/github/license/darkmoonight/Zest?color=ABACD3'/></a>
- </p>
+    <p align='center'>
+        <a href='https://github.com/darkmoonight/Zest/stargazers'><img alt='Stars' src='https://img.shields.io/github/stars/darkmoonight/Zest?color=ABACD3'/></a>
+        <a href='https://github.com/darkmoonight/Zest/forks'><img alt='Forks' src='https://img.shields.io/github/forks/darkmoonight/Zest?color=ABACD3'/></a>
+        <a href='https://github.com/darkmoonight/Zest/releases'><img alt='GitHub release' src='https://img.shields.io/github/v/release/darkmoonight/Zest?color=ABACD3'/></a>
+        <a href='https://github.com/darkmoonight/Zest/blob/main/LICENSE'><img alt='License' src='https://img.shields.io/github/license/darkmoonight/Zest?color=ABACD3'/></a>
+    </p>
 </p>
 
 <p align='center'> Tired of task chaos? Zest keeps you in control. 📱📅✅ </p>
@@ -48,7 +48,6 @@ If Zest has become an indispensable part of your life, consider supporting us th
 ### 📥 Get Zest Now
 
 [![Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.yoshi.todark)
-[![RuStore](https://img.shields.io/badge/RuStore-blue?style=for-the-badge&logo=vk&logoColor=white)](https://apps.rustore.ru/app/com.yoshi.todark)
 
 Or get the latest APK from the [Releases Section](https://github.com/DarkMooNight/Zest/releases/latest). You can also find the app on IzzyOnDroid via a F-Droid client [here](https://apt.izzysoft.de/fdroid/index/apk/com.yoshi.todark).
 
@@ -59,5 +58,5 @@ This project is licensed under the [MIT License](./LICENSE).
 ### 👨‍💻 Our Contributors
 
 <a href='https://github.com/darkmoonight/Zest/graphs/contributors'>
-  <img src='https://contrib.rocks/image?repo=darkmoonight/Zest' />
+    <img src='https://contrib.rocks/image?repo=darkmoonight/Zest'/>
 </a>

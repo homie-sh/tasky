@@ -1,7 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-import 'package:android_intent_plus/android_intent.dart';
-import 'package:android_intent_plus/flag.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -38,7 +36,7 @@ class IsarController {
       try {
         final String? uri = await platform.invokeMethod('pickDirectory');
         return uri;
-      } on PlatformException catch (e) {
+      } on PlatformException {
         return null;
       }
     } else if (Platform.isIOS) {
@@ -61,7 +59,8 @@ class IsarController {
 
   Future<void> createBackUp() async {
     final backUpDir = await pickDirectory();
-    String? allowedPath = Platform.isAndroid ? await getDownloadsDirectory() : backUpDir;
+    String? allowedPath =
+        Platform.isAndroid ? await getDownloadsDirectory() : backUpDir;
 
     if (backUpDir == null || allowedPath == null) {
       EasyLoading.showInfo('errorPath'.tr);
@@ -79,7 +78,7 @@ class IsarController {
 
       await isar.copyToFile(backUpFile.path);
 
-      if (Platform.isAndroid){
+      if (Platform.isAndroid) {
         Uint8List backupData = await backUpFile.readAsBytes();
 
         final bool success = await platform.invokeMethod('writeFile', {
@@ -96,7 +95,7 @@ class IsarController {
           EasyLoading.showError('error'.tr);
           return Future.error(e);
         }
-      }else{
+      } else {
         EasyLoading.showSuccess('successBackup'.tr);
       }
     } catch (e) {

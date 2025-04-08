@@ -55,23 +55,16 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   String firstDayOfWeek(newValue) {
-    if (newValue == 'monday'.tr) {
-      return 'monday';
-    } else if (newValue == 'tuesday'.tr) {
-      return 'tuesday';
-    } else if (newValue == 'wednesday'.tr) {
-      return 'wednesday';
-    } else if (newValue == 'thursday'.tr) {
-      return 'thursday';
-    } else if (newValue == 'friday'.tr) {
-      return 'friday';
-    } else if (newValue == 'saturday'.tr) {
-      return 'saturday';
-    } else if (newValue == 'sunday'.tr) {
-      return 'sunday';
-    } else {
-      return 'monday';
-    }
+    const days = [
+      'monday',
+      'tuesday',
+      'wednesday',
+      'thursday',
+      'friday',
+      'saturday',
+      'sunday',
+    ];
+    return days.firstWhere((day) => newValue == day.tr, orElse: () => 'monday');
   }
 
   @override
@@ -279,22 +272,26 @@ class _SettingsPageState extends State<SettingsPage> {
                                     'sunday'.tr,
                                   ],
                                   dropdownCange: (String? newValue) {
+                                    if (newValue == null) return;
+
                                     isar.writeTxnSync(() {
-                                      if (newValue == 'monday'.tr) {
-                                        settings.firstDay = 'monday';
-                                      } else if (newValue == 'tuesday'.tr) {
-                                        settings.firstDay = 'tuesday';
-                                      } else if (newValue == 'wednesday'.tr) {
-                                        settings.firstDay = 'wednesday';
-                                      } else if (newValue == 'thursday'.tr) {
-                                        settings.firstDay = 'thursday';
-                                      } else if (newValue == 'friday'.tr) {
-                                        settings.firstDay = 'friday';
-                                      } else if (newValue == 'saturday'.tr) {
-                                        settings.firstDay = 'saturday';
-                                      } else if (newValue == 'sunday'.tr) {
-                                        settings.firstDay = 'sunday';
+                                      const days = [
+                                        'monday',
+                                        'tuesday',
+                                        'wednesday',
+                                        'thursday',
+                                        'friday',
+                                        'saturday',
+                                        'sunday',
+                                      ];
+
+                                      for (final day in days) {
+                                        if (newValue == day.tr) {
+                                          settings.firstDay = day;
+                                          break;
+                                        }
                                       }
+
                                       isar.settings.putSync(settings);
                                     });
                                     MyApp.updateAppState(
@@ -406,7 +403,10 @@ class _SettingsPageState extends State<SettingsPage> {
               text: 'defaultScreen'.tr,
               info: true,
               infoSettings: true,
-              textInfo: settings.defaultScreen.isNotEmpty ? settings.defaultScreen.tr : allScreens[0].tr,
+              textInfo:
+                  settings.defaultScreen.isNotEmpty
+                      ? settings.defaultScreen.tr
+                      : allScreens[0].tr,
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
@@ -452,7 +452,9 @@ class _SettingsPageState extends State<SettingsPage> {
                                       ),
                                       onTap: () {
                                         this.setState(() {
-                                          updateDefaultScreen(allScreens[index]);
+                                          updateDefaultScreen(
+                                            allScreens[index],
+                                          );
                                         });
                                       },
                                     ),
@@ -477,7 +479,7 @@ class _SettingsPageState extends State<SettingsPage> {
               textInfo:
                   appLanguages.firstWhere(
                     (element) => (element['locale'] == locale),
-                    orElse: () => appLanguages.first,
+                    orElse: () => {'name': ''},
                   )['name'],
               onPressed: () {
                 showModalBottomSheet(
@@ -527,7 +529,6 @@ class _SettingsPageState extends State<SettingsPage> {
                                           newLocale:
                                               appLanguages[index]['locale'],
                                         );
-
                                         updateLanguage(
                                           appLanguages[index]['locale'],
                                         );
@@ -638,7 +639,7 @@ class _SettingsPageState extends State<SettingsPage> {
               icon: const Icon(LineAwesomeIcons.github),
               text: '${'project'.tr} GitHub',
               onPressed:
-                  () => urlLauncher('https://github.com/DarkMooNight/Zest'),
+                  () => urlLauncher('https://github.com/darkmoonight/Zest'),
             ),
           ],
         ),
